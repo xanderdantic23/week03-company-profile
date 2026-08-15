@@ -122,7 +122,7 @@ Blade is Laravel's powerful templating engine. It compiles template markup into 
 
 ## 11. Solutions
 
-1. Implemented explicit Controller namespace imports at the top of web.php using use App\Http\Controllers\CompanyController;.
+1. Implemented explicit Controller namespace imports at the top of `web.php` using use `App\Http\Controllers\CompanyController;`.
 
 2. Cleaned redundant default CSS files (`style.css`), properly configured `@import "tailwindcss";` inside `app.css`, and ensured `@vite(['resources/css/app.css', 'resources/js/app.js'])`
    was called within the HTML `<head>`.
