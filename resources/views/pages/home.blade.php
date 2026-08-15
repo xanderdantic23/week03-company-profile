@@ -7,6 +7,7 @@
 <div class="bg-gradient-to-r from-slate-900 to-blue-900 text-white py-20 px-6 text-center">
     <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Empowering Enterprise Infrastructure</h1>
     <p class="text-lg md:text-xl text-blue-200 mb-8 max-w-2xl mx-auto">We provide elite computer hardware assembly, server optimization, and full-stack software solutions.</p>
+    <!-- Call to Action Button -->
     <a href="{{ route('services') }}" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition">Explore Services</a>
 </div>
 

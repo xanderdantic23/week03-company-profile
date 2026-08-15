@@ -47,7 +47,7 @@ Laravel adopts MVC to promote **Separation of Concerns**. By keeping presentatio
 3. **Parallel Development:** Frontend developers can design Blade views simultaneously as backend engineers construct controllers and database logic.
 
 ### Request Flow Diagram
-Browser (Client Request) ──> routes/web.php ──> CompanyController ──> Blade View (pages/*.blade.php) ──> HTML Response (Sent to Browser)
+![Architecture Diagram](documents/ArchitectureDiagram.png)
 
 ---
 
@@ -55,12 +55,11 @@ Browser (Client Request) ──> routes/web.php ──> CompanyController ──
 
 Routing defines how an application responds to client requests for specific URL paths. In Laravel, routes are defined inside `routes/web.php`.
 
-* **GET Requests:** Handles standard HTTP GET calls used to fetch and display dynamic views.
 * **Named Routes:** Allows developers to reference URLs by name (e.g., `route('services')`), ensuring that changing URL path strings in `web.php` won't break application navigation links.
+* **GET Requests:** Handles standard HTTP GET calls used to fetch and display dynamic views.
+* **Route Definitions:** The actual PHP declarations in `routes/web.php` that map individual paths (`/`, `/about`, `/services`, `/contact`) to their respective `CompanyController` methods.
 
-### Route Definitions (`routes/web.php`)
-
-(put the image here screenshots/web.png)
+![Routes](screenshots/web.png)
 
 ---
 
@@ -74,10 +73,10 @@ Controllers organize route handling logic into dedicated PHP classes instead of 
 ## 7. Blade Templating Engine
 Blade is Laravel's powerful templating engine. It compiles template markup into plain PHP code and introduces dynamic layout syntax:
 
-**`@extends('layouts.app')`:** Inherits a master layout structure.
-**`@section('content')`:** Defines a block of content injected into a parent layout.
-**`@yield('content')`:** Creates a dynamic placeholder inside master layouts for child views to populate.
-**`@include('components.navbar')`:** Embeds modular, reusable Blade components.
+* **`@extends('layouts.app')`:** Inherits a master layout structure.
+* **`@section('content')`:** Defines a block of content injected into a parent layout.
+* **`@yield('content')`:** Creates a dynamic placeholder inside master layouts for child views to populate.
+* **`@include('components.navbar')`:** Embeds modular, reusable Blade components.
 
 ![app.blade.php](screenshots/SampleCode.png)
 
@@ -134,11 +133,15 @@ Blade is Laravel's powerful templating engine. It compiles template markup into 
 
 ## 12. Reflection
 
-Developing the Aeolus Digital company profile site using Laravel MVC provided valuable insights into standard enterprise request processing and backend architecture. Understanding how web requests move from a client browser through route definitions, trigger specific controller methods, and render modular Blade layouts clarified the practical benefits of separation of concerns.
+Developing our project using Laravel MVC really helped me understand how backend web development works in real life. At first, it was kind of confusing to figure out how everything connects, but working through it step-by-step made the whole structure make a lot more sense.
 
-Isolating business logic from presentation markup ensures that software projects remain maintainable over time. In monolithic setups, code duplication often leads to broken links and redundant layout maintenance. Blade layout inheritance (@extends, @yield, @include) resolves this issue by keeping layout elements like navigation bars and footers consistent across all pages.
+I learned that MVC stands for Model-View-Controller, and it is basically a way to organize code into three main parts so that everything has its own job. The Model deals with the data, the View is what the user sees on the screen, and the Controller acts like a middleman that manages what happens when a user clicks something. Before using MVC, it was easy to get overwhelmed trying to fit everything into single files. Learning MVC showed me how professional web applications are actually built.
 
-When applied to larger client-server enterprise systems, this architectural foundation makes scaling seamless. Teams can safely extend applications by adding new routes, database models, RESTful endpoints, or complex hardware monitoring interfaces without interfering with existing frontend architecture.
+Separation of concerns is important because keeping code organized prevents a lot of big headaches later on. If you mix your database logic, page styling, and application rules all in one place, the code gets super messy very fast. If you want to change a button or fix a bug, you might accidentally break something completely unrelated. Separating everything means you can work on the design without touching the core logic, or update the backend without messing up how the page looks. It also keeps you from duplicating layout code like headers and footers across every single page. Using Blade features like @extends and @yield allows us to reuse layout pieces easily so we do not have to copy and paste the same code over and over again.
+
+They work together in a clear, step-by-step chain whenever someone uses the website. It starts when a user opens a page in their browser, which sends a request to the web app. The Route receives that request first and figures out where it needs to go. Then, the route sends it to the right method in the Controller. The controller handles the main work or decision-making, like grabbing data if needed, and then tells the View what to show. Finally, the Blade View takes that information, turns it into a full webpage, and sends it back to the browser for the user to see.
+
+When projects grow into larger enterprise systems, this architecture makes scaling up much easier and less risky. In a big system with many pages and users, multiple developers are usually working on the project at the same time. Because the application is split into distinct parts, backend developers can build new database features or create APIs without getting in the way of frontend developers who are working on the user interface. It makes the system easier to test, update, and maintain over time without causing the whole application to crash when adding new features.
 
 ## 13. References
 
